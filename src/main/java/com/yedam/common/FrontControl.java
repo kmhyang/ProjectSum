@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.member.JoinControl;
+
 public class FrontControl extends HttpServlet {
 	private Map<String, Control> map;
 	String encoding;
@@ -23,10 +25,12 @@ public class FrontControl extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		encoding = config.getInitParameter("enc");
 		// 메인페이지
-//		map.put("/main.do", new MainControl());
-		// 검색기능
-		
-	} 
+		map.put("/main.do", new MainControl());
+
+		// 회원가입
+		map.put("/joinMember.do", new JoinControl());
+
+	}
 
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
